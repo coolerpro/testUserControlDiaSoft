@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:float="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+    <style>
+        div.row {
+            margin: 5px;
+            padding: 10px 20px;
+            border: 1px solid #900000;
+            box-sizing: border-box;
+        }
+
+        div.but {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<H1>Список пользователей</H1>
+<a href="/users/new">+ Создать пользователя</a>
+<br/>
+<hr/>
+<div>
+    <div class="row" th:each="userR : ${userList}">
+        <div class="but">
+            <form th:method="DELETE"
+                  th:action="@{/users/{id}(id=${userR.getUserId()})}"
+                  th:object="${userR}"
+                  accept-charset="UTF-8">
+                <input type="submit" value="Удалить">
+            </form>
+        </div>
+        <div class="but">
+            <form th:method="GET"
+                  th:action="@{/users/{id}/edit(id=${userR.getUserId()})}"
+                  th:object="${userR}"
+                  accept-charset="UTF-8">
+                <input type="submit" value="Изменить">
+            </form>
+        </div>
+        <div class="but">
+            <a th:href="@{/users/{id}(id=${userR.getUserId()})}"
+               th:text="${'Имя: '+userR.getName()+' '
+                   +'Пароль: '+ userR.getPass()+' '
+                   +'Емаил: '+ userR.getMail()}"></a>
+        </div>
+    </div>
+</div>
+<hr/>
+</body>
+</html>

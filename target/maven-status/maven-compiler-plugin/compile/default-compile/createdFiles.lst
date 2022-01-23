@@ -1,0 +1,5 @@
+ru\DiaSoft\testUserControl\dao\UserDao.class
+ru\DiaSoft\testUserControl\config\SpringMvcDispatcherServletInitializer.class
+ru\DiaSoft\testUserControl\models\User.class
+ru\DiaSoft\testUserControl\config\SpringConfig.class
+ru\DiaSoft\testUserControl\controllers\UserController.class

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+    <style>
+        div.but{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<p th:text="${user.getUserId()}"></p>
+<p th:text="${user.getName()}"></p>
+<p th:text="${user.getPass()}"></p>
+<p th:text="${user.getMail()}"></p>
+
+<br/>
+<div>
+    <div class="but">
+        <form th:method="DELETE"
+              th:action="@{/users/{id}(id=${user.getUserId()})}"
+              th:object="${user}"
+              accept-charset="UTF-8">
+            <input type="submit" value="Удалить">
+        </form>
+    </div>
+    <div class="but">
+        <form th:method="GET"
+              th:action="@{/users/{id}/edit(id=${user.getUserId()})}"
+              th:object="${user}"
+              accept-charset="UTF-8">
+            <input type="submit" value="Изменить">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
